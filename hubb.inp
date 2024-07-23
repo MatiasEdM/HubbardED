@@ -48,7 +48,7 @@ subspace_coeff no
 
 &FNA RELAXATION [P/Q PARTITION]
 
-relax          yes
+relax          no
 pspace         200
 
 &FNA STOQUASTIZED

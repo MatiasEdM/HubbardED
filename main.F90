@@ -183,10 +183,10 @@ PROGRAM main
 
   if ( fixed_node .eq. 'yes') then
      if (SysType .eq. 'bulk') then
-        call FNA_BULK( BoundCond,upDMAT(:,:),downDMAT(:,:),H(:,:),CI(:,1),lattVEC(:,:),lattPOS(:,:), &
-                & recVEC(:,:),A1o,A2o,nSITES,nSITESx,nSITESy,nEL,nELup,nELdown,nDET,nDETup,nDETdown, & 
-                & t,U,tk,Uk,nTWFCDET,nPDET,gsVsf(:),fna_trunc,subspace_coeff,fna_relax,fna_stoq,     &
-                & tot_spin_fna,tot_spin_sq_fna )
+        call FNA_BULK( BoundCond,upDMAT(:,:),downDMAT(:,:),H(:,:),CI(:,1),LMAT(:,:),lattVEC(:,:),       &
+                & lattPOS(:,:), recVEC(:,:),A1o,A2o,nSITES,nSITESx,nSITESy,nEL,nELup,nELdown,nDET,      &
+                & nDETup,nDETdown,t,U,tk,Uk,nTWFCDET,nPDET,gsVsf(:),fna_trunc,subspace_coeff,fna_relax, &
+                & fna_stoq,tot_spin_fna,tot_spin_sq_fna )
       elseif (SysType .eq. 'ladder') then
 !        call FNA_LADDER( BoundCond,upDMAT(:,:),downDMAT(:,:),H(:,:),lattVEC(:,:),lattPOS(:,:),       &
 !                & recVEC(:,:),A1o,A2o,nSITES,nSITESx,nSITESy,nEL,nELup,nELdown,nDET,nDETup,nDETdown, &

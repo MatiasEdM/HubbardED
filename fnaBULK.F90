@@ -1,6 +1,6 @@
-SUBROUTINE FNA_BULK(BoundCond,upDMAT,downDMAT,H,CI,lattVEC,lattPOS,recVEC,A1o,A2o,nSITES,nSITESx,nSITESy, &
-                & nEL,nELup,nELdown,nDET,nDETup,nDETdown,t,U,tk,Uk,nTWFCDET,nPDET,gsVsf,fna_trunc,        &
-                & subspace_coeff,fna_relax,fna_stoq,tot_spin_fna,tot_spin_sq_fna)
+SUBROUTINE FNA_BULK(BoundCond,upDMAT,downDMAT,H,CI,LMAT,lattVEC,lattPOS,recVEC,A1o,A2o,nSITES,nSITESx,nSITESy,    &
+                & nEL,nELup,nELdown,nDET,nDETup,nDETdown,t,U,tk,Uk,nTWFCDET,nPDET,gsVsf,fna_trunc,subspace_coeff, &
+                & fna_relax,fna_stoq,tot_spin_fna,tot_spin_sq_fna)
 
 !----------------------------------------------------------------------!
 ! SUBROUTINE to construct and diagonalize the EFFECTIVE HAMILTONIAN of !
@@ -35,6 +35,8 @@ SUBROUTINE FNA_BULK(BoundCond,upDMAT,downDMAT,H,CI,lattVEC,lattPOS,recVEC,A1o,A2
   integer(8)      , intent(in)  :: nTWFCDET
 
   integer(8)      , intent(in)  :: nPDET
+
+  integer(8)      , intent(in)  :: LMAT(nSITES,nSITES)
   
   integer(8)      , intent(in)  :: upDMAT(nSITES,nDETup)
   integer(8)      , intent(in)  :: downDMAT(nSITES,nDETdown)
@@ -92,7 +94,7 @@ SUBROUTINE FNA_BULK(BoundCond,upDMAT,downDMAT,H,CI,lattVEC,lattPOS,recVEC,A1o,A2
   double precision, allocatable :: CI_K(:)         !COEFFICIENTS of CI EXPANSION of GS-WFC in K-SPACE HF-ORBITALS.
   double precision, allocatable :: CI_TWFC(:)      !COEFFICIENTS of CI EXPANSION of GS-WFC in K-SPACE HF-ORBITALS for the TWFC.
 
-  double complex  , allocatable :: OVERLAP(:,:)    !MATRIX of single-particle orbitals overlap M[i,j] = <R[i] | K[j]> with ORBITAL ROTATION.
+  double precision, allocatable :: OVERLAP(:,:)    !MATRIX of single-particle orbitals overlap M[i,j] = <R[i] | K[j]> with ORBITAL ROTATION.
 
   double precision, allocatable :: SGN(:,:)
   double precision, allocatable :: Vsf(:)
@@ -168,7 +170,7 @@ SUBROUTINE FNA_BULK(BoundCond,upDMAT,downDMAT,H,CI,lattVEC,lattPOS,recVEC,A1o,A2
 
   allocate( OVERLAP(nSITES,nKPOINTS) )
 
-  call get_ORB_OVERLAP_BULK( OVERLAP(:,:),lattPOS(:,:),KPOINTS(:,:),KP_ENRG(:),class_KP(:),A1o,A2o,nSITES,nKPOINTS )
+  call get_ORB_OVERLAP_BULK( OVERLAP(:,:),LMAT(:,:),t,nSITES,nKPOINTS )
 
  !-------------------------------------------------!
  ! SUBROUTINE: GET THE FIRST nTWFCDET TERMS OF CI  !
