@@ -2,9 +2,9 @@
 
 system_type    bulk
 boundary_cond  pbcxy
-2d_lattice     3 2
-up_electrons   3
-down_electrons 3
+2d_lattice     2 2
+up_electrons   2
+down_electrons 2
 tot_spin       no
 mat_spin       no
 
