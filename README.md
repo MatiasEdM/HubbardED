@@ -10,11 +10,11 @@ or Open Boundary Conditions (OBC).
   - C-Metric of the Fermionic Sign Problem.
   - Diagonalization of the Stoquastized Hamiltonian.
   - Diagonalization of the Hamiltonian in a Subspace (truncated Hilbert Space).
-  - Fixed-Node Approximation (FNA) -  only available for BULK Systems.
+  - Fixed-Node Approximation (FNA) -  only available for BULK Systems and HF (Ndet=1) TWFC.
     - Diagonalization of the Hubbard Hamiltonian in K-Space.
     - GS Wave Function as a CI-Expansion in K-Space.
     - (squared) Total Spin of the GS Wave Function.
-    - Implementation of a Multi-Configurational Trial Wave Function with desired number of K-Space Determinants and Coefficients
+    - (NO) Implementation of a Multi-Configurational Trial Wave Function with desired number of K-Space Determinants and Coefficients
       obtained form the exact solution or a sub-space diagonalization.
     - Calculation of the Sign-Flip Potential of the Trial Wave Funciton and Exact Wave Funciton.
     - Relaxation of the FNA according to the P/Q Sub-Space Partition Scheme.
