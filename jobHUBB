@@ -2,14 +2,16 @@
 ## STANDARD OUTPUT AND ERROR: ---------------
 #SBATCH -o ./tjob.out.%j 
 #SBATCH -e ./tjob.err.%j
+## INITIAL WORKING DIRECTORY ---------------
+#SBATCH -D ./
 ## JOB NAME ---------------------------------
-#SBATCH -J HUBB
+#SBATCH -J 3x1-10SITES
 ## NUMBER OF NODES AND MPI TASKS PER NODE --
 #SBATCH --exclusive
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 ## WALL CLOCK LIMIT ------------------------
-#SBATCH --time=48:00:00
+#SBATCH --time=7-00:00:00
 #SBATCH --partition=p.7d.big
 
-srun /home/dimauro/HUBBARD/code_current/HUBB.x < hubb.inp > hubb.out
+srun HUBB.x < hubb.inp > hubb.out
