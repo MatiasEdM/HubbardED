@@ -37,6 +37,8 @@ PROGRAM main
   integer(8)      , allocatable :: hopMAPup(:,:), hopMAPdown(:,:) !Hopping MAPS for the up- and down-spin electrons.
   integer(8)      , allocatable :: dOCC(:,:)                      !The DOUBLE OCCUPANCY MAT (Ns,Ndet) of doubly occupied lattice sites.
 
+  integer(8)                    :: row
+
   double precision              :: A1o, A2o                       !LATTICE PARAMETERS.
 
   double precision, allocatable :: lattVEC(:,:), recVEC(:,:)      !Direct Lattice and Reciprocal Lattice VEC.
@@ -100,12 +102,31 @@ PROGRAM main
  ! SET UP: CONNECT. | DETS. | HOPP. MAPS | D. OCC  !
  !-------------------------------------------------!
 
-  call generate_lattPOS( lattPOS(:,:), lattVEC(:,:), nSITESx, nSITESy, nSITES)
+  !call generate_lattPOS( lattPOS(:,:), lattVEC(:,:), nSITESx, nSITESy, nSITES)
+
+  lattPOS(1,1)  = 0.d0 * lattVEC(1,1) + 0.d0 * lattVEC(1,2) ; lattPOS(2,1)  = 0.d0 * lattVEC(2,1) + 0.d0 * lattVEC(2,2)
+  lattPOS(1,2)  = 0.d0 * lattVEC(1,1) + 1.d0 * lattVEC(1,2) ; lattPOS(2,2)  = 0.d0 * lattVEC(2,1) + 1.d0 * lattVEC(2,2)
+  lattPOS(1,3)  = 1.d0 * lattVEC(1,1) + 1.d0 * lattVEC(1,2) ; lattPOS(2,3)  = 1.d0 * lattVEC(2,1) + 1.d0 * lattVEC(2,2)
+  lattPOS(1,4)  = 2.d0 * lattVEC(1,1) + 1.d0 * lattVEC(1,2) ; lattPOS(2,4)  = 2.d0 * lattVEC(2,1) + 1.d0 * lattVEC(2,2)
+  lattPOS(1,5)  = 0.d0 * lattVEC(1,1) + 2.d0 * lattVEC(1,2) ; lattPOS(2,5)  = 0.d0 * lattVEC(2,1) + 2.d0 * lattVEC(2,2)
+  lattPOS(1,6)  = 1.d0 * lattVEC(1,1) + 2.d0 * lattVEC(1,2) ; lattPOS(2,6)  = 1.d0 * lattVEC(2,1) + 2.d0 * lattVEC(2,2)
+  lattPOS(1,7)  = 2.d0 * lattVEC(1,1) + 2.d0 * lattVEC(1,2) ; lattPOS(2,7)  = 2.d0 * lattVEC(2,1) + 2.d0 * lattVEC(2,2)
+  lattPOS(1,8)  = 0.d0 * lattVEC(1,1) + 3.d0 * lattVEC(1,2) ; lattPOS(2,8)  = 0.d0 * lattVEC(2,1) + 3.d0 * lattVEC(2,2)
+  lattPOS(1,9)  = 1.d0 * lattVEC(1,1) + 3.d0 * lattVEC(1,2) ; lattPOS(2,9)  = 1.d0 * lattVEC(2,1) + 3.d0 * lattVEC(2,2)
+  lattPOS(1,10) = 2.d0 * lattVEC(1,1) + 3.d0 * lattVEC(1,2) ; lattPOS(2,10) = 2.d0 * lattVEC(2,1) + 3.d0 * lattVEC(2,2)
 
   call generate_reciprocalVEC( recVEC(:,:), lattVEC(:,:) )
 
-  call generate_connectMAT( LMAT(:,:),BoundCond,nSITES,nSITESx,nSITESy  )
-  
+  !call generate_connectMAT( LMAT(:,:),BoundCond,nSITES,nSITESx,nSITESy  )
+
+  open ( unit=10, file='LMAT.dat', status='old', access='sequential' )
+       read(10,*)
+       read(10,*)
+       do row = 1,nSITES,1
+          read(10,*) LMAT(row,:)
+       enddo      
+  close( unit=10, status='keep' ) 
+
   call generate_rsDETS( upDMAT(:,:)  ,nSITES,nELup  ,nDETup   )
   call generate_rsDETS( downDMAT(:,:),nSITES,nELdown,nDETdown )
 

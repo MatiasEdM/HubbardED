@@ -2,9 +2,9 @@
 
 system_type    bulk
 boundary_cond  pbcxy
-2d_lattice     3 2
-up_electrons   3
-down_electrons 3
+2d_lattice     5 2
+up_electrons   5
+down_electrons 5
 tot_spin       no
 mat_spin       no
 
@@ -35,9 +35,9 @@ tot_spin_trunc no
 
 &FIXED NODE APPROXIMATION
 
-FNA            yes
-trunc_diag     yes
-tot_spin_fna   yes
+FNA            no
+trunc_diag     no
+tot_spin_fna   no
 
 &TRIAL WAVE FUNCTION
 
@@ -48,10 +48,10 @@ subspace_coeff no
 
 &FNA RELAXATION [P/Q PARTITION]
 
-relax          yes
-pspace         200
+relax          no
+pspace         0
 
 &FNA STOQUASTIZED
 
-stoq_fna       yes
-tot_sp_stq_fna yes
+stoq_fna       no
+tot_sp_stq_fna no

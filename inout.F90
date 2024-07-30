@@ -376,11 +376,11 @@ SUBROUTINE write_output_init(SysType,BoundCond,nSITES,nSITESx,nSITESy,nEL,nELup,
   write(*,*)
   write(*,fmt=240) '----  UP-SPIN SUBSPACE  ----'
   write(*,*)
-  call writeINTMAT( upDMAT(:,:),nSITES,nDETup )
+  !call writeINTMAT( upDMAT(:,:),nSITES,nDETup )
   write(*,*)
   write(*,fmt=240) '---- DOWN-SPIN SUBSPACE ----'
   write(*,*)
-  call writeINTMAT( downDMAT(:,:),nSITES,nDETdown )
+  !call writeINTMAT( downDMAT(:,:),nSITES,nDETdown )
   write(*,*)
   write(*,fmt=200) '---------------------------------------------------------'
   write(*,*)
@@ -388,30 +388,30 @@ SUBROUTINE write_output_init(SysType,BoundCond,nSITES,nSITESx,nSITESy,nEL,nELup,
   write(*,*)
   write(*,fmt=240) '----  UP-SPIN SUBSPACE  ----'
   write(*,*)
-  call writeINTMAT( hopMAPup(:,:),nDETup,nDETup )
+  !call writeINTMAT( hopMAPup(:,:),nDETup,nDETup )
   write(*,*)
   write(*,fmt=240) '---- DOWN-SPIN SUBSPACE ----'
   write(*,*)
-  call writeINTMAT( hopMAPdown(:,:),nDETdown,nDETdown )
+  !call writeINTMAT( hopMAPdown(:,:),nDETdown,nDETdown )
   write(*,*)
   write(*,fmt=200) '---------------------------------------------------------'
   write(*,*)
   write(*,fmt=200) '---- DOUBLE OCCUPANCY DETERMINANT MAP -------------------'
   write(*,*)
-  call writeINTMAT( dOCC(:,:),nSITES,nDET )
+  !call writeINTMAT( dOCC(:,:),nSITES,nDET )
   write(*,*)
   write(*,fmt=200) '---------------------------------------------------------'
   write(*,*)
   write(*,fmt=200) '---- REAL-SPACE BASIS HAMILTONIAN MATRIX ----------------'
   write(*,*)
-  call writeREALMAT( H(:,:),nDET,nDET )
+  !call writeREALMAT( H(:,:),nDET,nDET )
   write(*,*)
   write(*,fmt=200) '---------------------------------------------------------'
   write(*,*)
   if ( mat_spin .eq. 'yes' ) then
      write(*,fmt=200) '---- REAL-SPACE BASIS SPIN SQUARED MATRIX ---------------'
      write(*,*)
-     call writeREALMAT( S2(:,:),nDET,nDET )
+     !call writeREALMAT( S2(:,:),nDET,nDET )
      write(*,*)
      write(*,fmt=200) '---------------------------------------------------------'
      write(*,*)
