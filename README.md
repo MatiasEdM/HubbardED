@@ -4,7 +4,7 @@ F90 code for Exact Diagonalization (ED) of the Hubbard Hamiltonian in Real (Slat
 or Open Boundary Conditions (OBC).
 
 - Features available for the ED in Real Space:
-  - Gound State (GS) Wave Function as a CI-Expansion.
+  - Ground State (GS) Wave Function as a CI-Expansion.
   - Spectrum of the Hamiltonian.
   - (squared) Total Spin of the GS Wave Function.
   - C-Metric of the Fermionic Sign Problem.
@@ -16,7 +16,7 @@ or Open Boundary Conditions (OBC).
     - (squared) Total Spin of the GS Wave Function.
     - Implementation of a Multi-Configurational Trial Wave Function with desired number of K-Space Determinants and Coefficients
       obtained form the exact solution or a sub-space diagonalization.
-    - Calculation of the Sign-Flip Potential of the Trial Wave Funciton and Exact Wave Funciton.
+    - Calculation of the Sign-Flip Potential of the Trial Wave Function and Exact Wave Funciton.
     - Relaxation of the FNA according to the P/Q Sub-Space Partition Scheme.
     - Diagonalization of the Stoquastized FNA-Hamiltonian.
 
